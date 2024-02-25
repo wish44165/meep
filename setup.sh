@@ -56,7 +56,7 @@ make -j $(sysctl -n hw.logicalcpu) && make install
 cd ..
 
 # install version of libctl from github that allows the without guile option
-wget https://gihttps://github.com/NanoComp/meep/issues/1853#issuecomment-1826828860thub.com/NanoComp/libctl/releases/download/v4.5.0/libctl-4.5.0.tar.gz
+wget https://github.com/NanoComp/libctl/releases/download/v4.5.0/libctl-4.5.0.tar.gz
 tar -xzf libctl-4.5.0.tar.gz
 cd libctl-4.5.0
 ./configure CPPFLAGS="$CPPFLAGS" LDFLAGS="$LDFLAGS" PYTHON=python --enable-shared --enable-maintainer-mode --without-guile --prefix=$PREFIX
