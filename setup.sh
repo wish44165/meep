@@ -46,7 +46,7 @@ echo "f = h5py.File('parallel_test.hdf5', 'w', driver='mpio', comm=MPI.COMM_WORL
 echo "dset = f.create_dataset('test', (4,), dtype='i')" >> mpitest.py
 echo "dset[rank] = rank" >> mpitest.py
 echo "f.close()" >> mpitest.py
-mpirun -np $(sysctl -n hw.logicalcpu) python -m mpi4py ../mpitest.py
+mpirun -np $(sysctl -n hw.logicalcpu) python -m mpi4py ./mpitest.py
 
 # install current version of harminv from github
 git clone https://github.com/NanoComp/harminv.git
