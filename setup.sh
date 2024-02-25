@@ -40,13 +40,13 @@ cd ..
 # check that mpi4py works and h5py can use openmpi
 echo "from mpi4py import MPI" > mpitest.py
 echo "print('Hello World (from process %d)' % MPI.COMM_WORLD.Get_rank())" >> mpitest.py
-echo "import h5https://github.com/NanoComp/meep/issues/1853#issuecomment-1826828860py" >> mpitest.py
+echo "import h5py" >> mpitest.py
 echo "rank = MPI.COMM_WORLD.rank" >> mpitest.py
 echo "f = h5py.File('parallel_test.hdf5', 'w', driver='mpio', comm=MPI.COMM_WORLD)" >> mpitest.py
 echo "dset = f.create_dataset('test', (4,), dtype='i')" >> mpitest.py
 echo "dset[rank] = rank" >> mpitest.py
 echo "f.close()" >> mpitest.py
-mpirun -np 4 python -m mpi4py ./mpitest.py
+mpirun -np $(sysctl -n hw.logicalcpu) python -m mpi4py ../mpitest.py
 
 # install current version of harminv from github
 git clone https://github.com/NanoComp/harminv.git
